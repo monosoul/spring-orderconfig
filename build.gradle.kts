@@ -8,6 +8,7 @@ plugins {
     `java-library`
     groovy
     id("org.springframework.boot") version "2.1.4.RELEASE"
+    jacoco
 }
 
 apply {
@@ -47,6 +48,21 @@ tasks {
         testLogging {
             events = setOf(PASSED, SKIPPED, FAILED)
             exceptionFormat = FULL
+        }
+    }
+
+    "jacocoTestReport"(JacocoReport::class) {
+        executionData(
+                fileTree(project.rootDir) {
+                    include("**/build/jacoco/*.exec")
+                }
+        )
+
+        reports {
+            xml.isEnabled = true
+            xml.destination = File(buildDir, "reports/jacoco/report.xml")
+            html.isEnabled = false
+            csv.isEnabled = false
         }
     }
 }
