@@ -90,6 +90,16 @@ class OrderQualifierAutowireCandidateResolverSpec extends ExtendedSpecification 
             beanName << generate { randomString() }
     }
 
+    def "isRequired() should be delegated to the internal resolver"() {
+        when:
+            resolver.isRequired(descriptor)
+        then:
+            1 * internalResolver.isRequired(descriptor)
+            0 * internalResolver._
+        where:
+            beanName << generate { randomString() }
+    }
+
     private static class AssignableClass implements SomeInterface {}
 
     private static class NotAssignableClass {}
