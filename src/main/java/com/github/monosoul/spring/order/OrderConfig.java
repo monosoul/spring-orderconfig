@@ -78,10 +78,10 @@ import org.springframework.stereotype.Component;
  */
 public interface OrderConfig<T> {
 
-	/**
-	 * Returns a list of order config items containing bean names and classes that are implement T.
-	 *
-	 * @return List of {@link OrderConfigItem}'s
-	 */
-	List<? extends OrderConfigItem<? extends T>> getItems();
+    /**
+     * Returns a list of order config items containing bean names and classes that are implement T.
+     *
+     * @return List of {@link OrderConfigItem}'s
+     */
+    List<? extends OrderConfigItem<? extends T>> getItems();
 }

@@ -41,11 +41,11 @@ import org.springframework.stereotype.Component;
  */
 public @interface OrderQualifier {
 
-	/**
-	 * Dependent class
-	 *
-	 * @return a class instance
-	 */
-	@NonNull
-	Class<?> value() default Void.class;
+    /**
+     * Dependent class
+     *
+     * @return a class instance
+     */
+    @NonNull
+    Class<?> value() default Void.class;
 }

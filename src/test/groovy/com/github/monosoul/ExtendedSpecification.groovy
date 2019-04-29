@@ -5,13 +5,13 @@ import spock.lang.Specification
 
 abstract class ExtendedSpecification extends Specification {
 
-	static final LIMIT = 10
+    static final LIMIT = 10
 
-	def randomString() {
-		RandomStringUtils.randomAlphabetic(LIMIT)
-	}
+    def randomString() {
+        RandomStringUtils.randomAlphabetic(LIMIT)
+    }
 
-	def <T> List<T> generate(final Closure<T> generate) {
-		(0..LIMIT).collect(generate)
-	}
+    def <T> List<T> generate(final Closure<T> generate) {
+        (0..LIMIT).collect(generate)
+    }
 }

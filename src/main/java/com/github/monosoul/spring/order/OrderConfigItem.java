@@ -9,19 +9,19 @@ import org.springframework.lang.NonNull;
  */
 public interface OrderConfigItem<T> {
 
-	/**
-	 * Bean name
-	 *
-	 * @return bean name
-	 */
-	@NonNull
-	String getBeanName();
+    /**
+     * Bean name
+     *
+     * @return bean name
+     */
+    @NonNull
+    String getBeanName();
 
-	/**
-	 * Bean class
-	 *
-	 * @return class
-	 */
-	@NonNull
-	Class<T> getClazz();
+    /**
+     * Bean class
+     *
+     * @return class
+     */
+    @NonNull
+    Class<T> getClazz();
 }
