@@ -1,6 +1,7 @@
 package com.github.monosoul.spring.order.support.resolver
 
 import com.github.monosoul.ExtendedSpecification
+import com.github.monosoul.SomeInterface
 import com.github.monosoul.spring.order.support.OrderQualifier
 import org.springframework.beans.factory.config.BeanDefinitionHolder
 import org.springframework.beans.factory.config.DependencyDescriptor
