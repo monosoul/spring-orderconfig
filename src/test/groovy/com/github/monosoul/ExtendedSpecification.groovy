@@ -17,6 +17,6 @@ abstract class ExtendedSpecification extends Specification {
     }
 
     def <T> List<T> generate(final Closure<T> generate) {
-        (0..LIMIT).collect(generate)
+        (1..LIMIT).collect(generate)
     }
 }
