@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+
 group = "com.github.monosoul"
 version = "0.0.1"
 
@@ -35,4 +38,15 @@ dependencies {
     }
     testImplementation(localGroovy())
     testImplementation("org.apache.commons:commons-lang3:3.8.1")
+}
+
+tasks {
+    withType(Test::class) {
+        useJUnit()
+
+        testLogging {
+            events = setOf(PASSED, SKIPPED, FAILED)
+            exceptionFormat = FULL
+        }
+    }
 }
