@@ -76,6 +76,7 @@ import org.springframework.stereotype.Component;
  * @see Autowired
  * @see Qualifier
  */
+@FunctionalInterface
 public interface OrderConfig<T> {
 
     /**
