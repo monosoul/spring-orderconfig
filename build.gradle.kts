@@ -1,0 +1,38 @@
+group = "com.github.monosoul"
+version = "0.0.1"
+
+plugins {
+    `java-library`
+    groovy
+    id("org.springframework.boot") version "2.1.4.RELEASE"
+}
+
+apply {
+    plugin("io.spring.dependency-management")
+}
+
+repositories {
+    jcenter()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    val lombokDependency = "org.projectlombok:lombok:1.18.6"
+
+    annotationProcessor(lombokDependency)
+    compileOnly(lombokDependency)
+    api("org.springframework:spring-context")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude("junit")
+    }
+    testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
+        exclude("org.codehaus.groovy")
+    }
+    testImplementation(localGroovy())
+    testImplementation("org.apache.commons:commons-lang3:3.8.1")
+}
