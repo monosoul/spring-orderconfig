@@ -14,57 +14,57 @@ import org.springframework.stereotype.Component;
  * <p>
  * Example:
  * <br>
- * <pre>{@code
+ * <pre><code>
  * public interface SomeInterface {}
  *
- * @Component
- * public class SomeClass implements SomeInterface {
- *     private final SomeInterface dependency;
+ * {@literal @}Component
+ *  public class SomeClass implements SomeInterface {
+ *      private final SomeInterface dependency;
  *
- *     @Autowired
- *     public SomeClass(final SomeInterface dependency) {
- *         this.dependency = dependency;
- *     }
- * }
+ *     {@literal @}Autowired
+ *      public SomeClass(final SomeInterface dependency) {
+ *          this.dependency = dependency;
+ *      }
+ *  }
  *
- * @Component
- * public class AnotherClass implements SomeInterface {
- *     //some logic here
- * }
+ * {@literal @}Component
+ *  public class AnotherClass implements SomeInterface {
+ *      //some logic here
+ *  }
  *
- * @Configuration
- * public class JavaConfig {
+ * {@literal @}Configuration
+ *  public class JavaConfig {
  *
- *     @Bean
- *     public OrderConfig<SomeInterface> someInterfaceOrderConfig() {
- *         return new OrderConfigImpl<>(Arrays.asList(
- *             OrderConfigItemImpl.of(SomeClass.class),
- *             OrderConfigItemImpl.of(AnotherClass.class)
- *         ));
- *     }
- * }
+ *     {@literal @}Bean
+ *     {@literal public OrderConfig<SomeInterface>} someInterfaceOrderConfig() {
+ *         {@literal return new OrderConfigImpl<>}(Arrays.asList(
+ *              OrderConfigItemImpl.of(SomeClass.class),
+ *              OrderConfigItemImpl.of(AnotherClass.class)
+ *          ));
+ *      }
+ *  }
  *
- * }</pre>
+ * </code></pre>
  * Is equal to:
- * <pre>{@code
+ * <pre><code>
  * public interface SomeInterface {}
  *
- * @Component
- * public class SomeClass implements SomeInterface {
- *     private final SomeInterface dependency;
+ * {@literal @}Component
+ *  public class SomeClass implements SomeInterface {
+ *      private final SomeInterface dependency;
  *
- *     @Autowired
- *     public SomeClass(@Qualifier("someClass") final SomeInterface dependency) {
- *         this.dependency = dependency;
- *     }
- * }
+ *     {@literal @}Autowired
+ *      public SomeClass(@Qualifier("someClass") final SomeInterface dependency) {
+ *          this.dependency = dependency;
+ *      }
+ *  }
  *
- * @Component
- * public class AnotherClass implements SomeInterface {
- *     //some logic here
- * }
+ * {@literal @}Component
+ *  public class AnotherClass implements SomeInterface {
+ *      //some logic here
+ *  }
  *
- * }</pre>
+ * </code></pre>
  * Requires {@link OrderConfigConfiguration} to work.
  *
  * @param <T> any class

@@ -12,26 +12,26 @@ import org.springframework.stereotype.Component;
  * Basically it's just reversed {@link Qualifier} and could be used like that.<br>
  * <br>
  * Example:
- * <pre>{@code
+ * <pre><code>
  * public interface SomeInterface {}
  *
- * @Component
- * public class SomeClass implements SomeInterface {
- *     private final SomeInterface dependency;
+ * {@literal @}Component
+ *  public class SomeClass implements SomeInterface {
+ *      private final SomeInterface dependency;
  *
- *     @Autowired
- *     public SomeClass(final SomeInterface dependency) {
- *         this.dependency = dependency;
- *     }
- * }
+ *     {@literal @}Autowired
+ *      public SomeClass(final SomeInterface dependency) {
+ *          this.dependency = dependency;
+ *      }
+ *  }
  *
- * @OrderQualifier(SomeClass.class)
- * @Component
- * public class AnotherClass implements SomeInterface {
- *     //some logic here
- * }
+ * {@literal @}OrderQualifier(SomeClass.class)
+ * {@literal @}Component
+ *  public class AnotherClass implements SomeInterface {
+ *      //some logic here
+ *  }
  *
- * }</pre>
+ * </code></pre>
  * Requires {@link OrderConfigConfiguration} to work.
  *
  * @see Qualifier
