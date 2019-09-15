@@ -11,6 +11,8 @@ plugins {
     groovy
     id("org.springframework.boot") version "2.1.4.RELEASE" apply false
     jacoco
+    `maven-publish`
+    signing
 }
 
 apply {
@@ -24,7 +26,7 @@ the<DependencyManagementExtension>().apply {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 java {
@@ -75,4 +77,23 @@ tasks {
             csv.isEnabled = false
         }
     }
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+    classifier = "javadoc"
+    from(tasks.javadoc)
+}
+
+val sourcesJar by tasks.registering(Jar::class) {
+    classifier = "sources"
+    from(sourceSets.main.get().allSource)
+}
+
+artifacts {
+    archives(javadocJar)
+    archives(sourcesJar)
+}
+
+signing {
+    sign(configurations.archives.get())
 }
