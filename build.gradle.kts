@@ -1,6 +1,7 @@
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
+import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
 
 group = "com.github.monosoul"
 version = "0.0.1"
@@ -18,7 +19,7 @@ apply {
 
 the<DependencyManagementExtension>().apply {
     imports {
-        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        mavenBom(BOM_COORDINATES)
     }
 }
 
@@ -33,6 +34,7 @@ java {
 
 dependencies {
     val lombokDependency = "org.projectlombok:lombok:1.18.6"
+    val spockVersion = "1.3-groovy-2.5"
 
     annotationProcessor(lombokDependency)
     compileOnly(lombokDependency)
@@ -41,9 +43,10 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude("junit")
     }
-    testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
+    testImplementation("org.spockframework:spock-core:$spockVersion") {
         exclude("org.codehaus.groovy")
     }
+    testImplementation("org.spockframework:spock-spring:$spockVersion")
     testImplementation(localGroovy())
     testImplementation("org.apache.commons:commons-lang3:3.8.1")
 }
