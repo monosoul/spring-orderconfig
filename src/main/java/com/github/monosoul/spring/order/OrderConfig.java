@@ -35,6 +35,7 @@ import org.springframework.stereotype.Component;
  * @Configuration
  * public class JavaConfig {
  *
+ *     @Bean
  *     public OrderConfig<SomeInterface> someInterfaceOrderConfig() {
  *         return new OrderConfigImpl<>(Arrays.asList(
  *             OrderConfigItemImpl.of(SomeClass.class),
