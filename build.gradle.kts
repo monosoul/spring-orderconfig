@@ -94,6 +94,51 @@ artifacts {
     archives(sourcesJar)
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("mavenCentral") {
+            artifact(tasks.jar.get())
+            artifact(javadocJar.get())
+            artifact(sourcesJar.get())
+
+            pom {
+                name.set("Spring OrderConfig")
+                description.set("A library that provides a convenient way of configuring decorators order in Spring.")
+                url.set("https://github.com/monosoul/spring-orderconfig")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("monosoul")
+                        name.set("Andrei Nevedomskii")
+                        email.set("Kloz.Klaud@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/monosoul/spring-orderconfig.git")
+                    developerConnection.set("scm:git:ssh://github.com/monosoul/spring-orderconfig.git")
+                    url.set("https://github.com/monosoul/spring-orderconfig")
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            setUrl("https://oss.sonatype.org/service/local/staging/deploy/maven2")
+            credentials {
+                val nexusUsername: String by project
+                val nexusPassword: String by project
+                username = nexusUsername
+                password = nexusPassword
+            }
+        }
+    }
+}
+
 signing {
-    sign(configurations.archives.get())
+    sign(publishing.publications["mavenCentral"])
 }
