@@ -21,7 +21,9 @@ final class BeanDefinitionProvider implements Function<BeanDefinitionSpecificati
                 .setAutowireMode(AUTOWIRE_AUTODETECT)
                 .getBeanDefinition();
         beanDefinition.setPrimary(specification.isPrimary());
-        beanDefinition.addQualifier(new AutowireCandidateQualifier(OrderQualifier.class, specification.getDependentClass()));
+        beanDefinition.addQualifier(
+                new AutowireCandidateQualifier(OrderQualifier.class, specification.getDependentClass())
+        );
 
         return beanDefinition;
     }
