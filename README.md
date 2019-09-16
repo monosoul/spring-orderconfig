@@ -89,6 +89,8 @@ public class AnotherClass implements SomeInterface {
 ```
 
 ## Release History
+* 0.0.2
+    * Use delomboked sources for sources.jar and javadoc.jar generation
 * 0.0.1
     * Initial release
     
