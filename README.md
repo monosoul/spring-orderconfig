@@ -87,3 +87,10 @@ public class AnotherClass implements SomeInterface {
     //some logic here
 }
 ```
+
+## Release History
+* 0.0.1
+    * Initial release
+    
+## License
+The software is licensed under the [Apache-2.0 License](LICENSE).
