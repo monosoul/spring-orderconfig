@@ -1,3 +1,4 @@
+import com.github.monosoul.yadegrap.DelombokTask
 import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
 import org.gradle.api.tasks.testing.logging.TestLogEvent.*
@@ -13,6 +14,7 @@ plugins {
     jacoco
     `maven-publish`
     signing
+    id("com.github.monosoul.yadegrap") version "0.0.1"
 }
 
 apply {
@@ -79,14 +81,30 @@ tasks {
     }
 }
 
-val javadocJar by tasks.registering(Jar::class) {
-    classifier = "javadoc"
-    from(tasks.javadoc)
+val delombok = tasks.named("delombok", DelombokTask::class) {
+    formatOptions = mapOf(
+            "generateDelombokComment" to "skip",
+            "generated" to "generate",
+            "javaLangAsFQN" to "skip"
+    )
+}
+
+tasks.named("compileJava", JavaCompile::class) {
+    setSource(delombok)
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
     classifier = "sources"
-    from(sourceSets.main.get().allSource)
+    from(delombok)
+}
+
+val javadoc = tasks.named("javadoc", Javadoc::class) {
+    setSource(delombok)
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+    classifier = "javadoc"
+    from(javadoc)
 }
 
 artifacts {
