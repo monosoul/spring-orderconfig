@@ -35,7 +35,7 @@ This library has been tested with Spring Boot version `2.1.4`. Should also work 
 The library is compiled with Java 8 as target, so you'd also need at least Java 8 to use it.
 
 ### Usage example
-A build script example:
+An example of 2 implementations of the same interface:
 ```java
 public interface SomeInterface {}
 
