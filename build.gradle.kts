@@ -5,7 +5,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
 
 group = "com.github.monosoul"
-version = "0.0.1"
+version = "0.0.2"
 
 plugins {
     `java-library`
@@ -14,7 +14,7 @@ plugins {
     jacoco
     `maven-publish`
     signing
-    id("com.github.monosoul.yadegrap") version "0.0.2"
+    id("com.github.monosoul.yadegrap") version "0.0.1"
 }
 
 apply {
