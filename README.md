@@ -12,14 +12,14 @@ To add the dependency to you maven build, simply add this to your `pom.xml`:
 <dependency>
     <groupId>com.github.monosoul</groupId>
     <artifactId>spring-orderconfig</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 </dependency>
 ```
 
 Or with gradle, using Kotlin DSL:
 ```kotlin
 dependencies {
-    implementation("com.github.monosoul:spring-orderconfig:0.0.1")
+    implementation("com.github.monosoul:spring-orderconfig:0.0.2")
 }
 ```
 
