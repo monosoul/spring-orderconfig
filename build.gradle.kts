@@ -14,7 +14,7 @@ plugins {
     jacoco
     `maven-publish`
     signing
-    id("com.github.monosoul.yadegrap") version "0.0.1"
+    id("com.github.monosoul.yadegrap") version "0.0.2"
 }
 
 apply {
